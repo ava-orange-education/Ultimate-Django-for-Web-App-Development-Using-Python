@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: taskmanager-migrate
+spec:
+  template:
+    spec:
+      containers:
+      - name: taskmanagerapp
+        image: llazzaro/web_applications_django
+        command: ["python", "manage.py", "migrate"]
+        envFrom:
+        - configMapRef:
+            name: taskmanager-settings
+        - secretRef:
+            name: taskmanager-secrets
+      restartPolicy: Never
+  backoffLimit: 4

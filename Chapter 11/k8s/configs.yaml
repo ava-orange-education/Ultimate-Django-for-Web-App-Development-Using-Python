@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: taskmanager-settings
+data:
+  DEBUG: "False"
+  ALLOWED_HOSTS: "localhost"
+  DB_NAME: "mydatabase"
+  DB_USER: "postgres"
+  DB_HOST: "postgres-0.postgres.taskmanager.svc.cluster.local"
+  DB_PORT: "5432"
+  DJANGO_SETTINGS_MODULE: "taskmanager.production"
+  REDIS_LOCATION: "redis://redis-0.redis.taskmanager.svc.cluster.local/1"

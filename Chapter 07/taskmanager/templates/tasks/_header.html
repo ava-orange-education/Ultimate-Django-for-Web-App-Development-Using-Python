@@ -1,0 +1,18 @@
+{% load static %}
+
+<header class="d-flex justify-content-between align-items-center p-3">
+    <!-- Left side -->
+    <div class="d-flex align-items-center">
+        <!-- Logo -->
+        <img src="{% static 'images/logo.png' %}" alt="Task Manager" width="50" class="mr-3">
+
+        <a href="{% url 'tasks:task-home' %}" class="btn btn-secondary mr-2" role="button">Home</a>
+        <a href="{% url 'tasks:task-create' %}" class="btn btn-primary" role="button">Create</a>
+    </div>
+
+    <!-- Right side -->
+    <div class="d-flex">
+        <input type="text" class="form-control" id="search" placeholder="Search">
+        <button type="button" class="btn btn-success ml-2">Search</button>
+    </div>
+</header>

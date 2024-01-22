@@ -1,0 +1,37 @@
+{% extends 'tasks/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Token</title>
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="card-title">Your API Token</h1>
+                    </div>
+                    <div class="card-body">
+                        {% if token %}
+                            <p class="card-text">Your token: <code>{{ token }}</code></p>
+                            <p class="card-text">Your JWT token: <code>{{ jwt_token }}</code></p>
+                            <p class="card-text">Your JWT refresh token: <code>{{ refresh_token }}</code></p>
+
+                        {% else %}
+                            <p class="card-text">No token available.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

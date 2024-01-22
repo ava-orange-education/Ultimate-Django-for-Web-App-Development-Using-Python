@@ -1,0 +1,10 @@
+{% extends "tasks/base.html" %}
+
+{% block content %}
+  <h1>{{ task.title }}</h1>
+  <h2>Description</h2>
+  <p>{{ task.description }}</p>
+  <a href="{% url 'tasks:task-update' task.id %}">Edit</a>
+  <a href="{% url 'tasks:task-delete' task.id %}">Delete</a>
+  <a href="{% url 'tasks:task-list' %}">List</a>
+{% endblock %}

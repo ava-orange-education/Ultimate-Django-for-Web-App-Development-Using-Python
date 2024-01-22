@@ -1,0 +1,6 @@
+{
+  "taskmanager/tasks/tests/test_views.py": true,
+  "taskmanager/tasks/tests/integration/test_api.py": true,
+  "taskmanager/tasks/tests/integration/test_forms.py": true,
+  "": true
+}

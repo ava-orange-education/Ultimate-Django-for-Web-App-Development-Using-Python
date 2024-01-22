@@ -1,0 +1,51 @@
+{% extends "tasks/base.html" %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2>Tasks by Status</h2>
+        <div class="row mt-4">
+
+            <!-- Unassigned Tasks -->
+            <div class="col-md-3">
+                <h4>Unassigned</h4>
+                {% for task in unassigned_tasks %}
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="{% url 'tasks:task-detail' task.pk %}">{{ task.title }}</a></h5>
+                            <p class="card-text">Owner: {{ task.owner.username|default:"None" }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- In Progress Tasks -->
+            <div class="col-md-3">
+                <h4>In Progress</h4>
+                {% for task in in_progress_tasks %}
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="{% url 'tasks:task-detail' task.pk %}">{{ task.title }}</a></h5>
+                            <p class="card-text">Owner: {{ task.owner.username|default:"None" }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Completed Tasks -->
+            <div class="col-md-3">
+                <h4>Completed</h4>
+                {% for task in done_tasks %}
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="{% url 'tasks:task-detail' task.pk %}">{{ task.title }}</a></h5>
+                            <p class="card-text">Owner: {{ task.owner.username|default:"None" }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div> <!-- End of row -->
+
+
+    </div> <!-- End of container -->
+{% endblock %}

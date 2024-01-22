@@ -1,0 +1,13 @@
+<header class="d-flex justify-content-between align-items-center p-3">
+    <!-- Left side -->
+    <div>
+        <a href="{% url 'tasks:task-create' %}" class="btn btn-primary" role="button">Create</a>
+    </div>
+
+
+    <!-- Right side -->
+    <div class="d-flex">
+        <input type="text" class="form-control" id="search" placeholder="Search">
+        <button type="button" class="btn btn-success ml-2">Search</button>
+    </div>
+</header>

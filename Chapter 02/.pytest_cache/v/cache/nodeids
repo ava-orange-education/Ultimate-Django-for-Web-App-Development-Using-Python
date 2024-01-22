@@ -1,0 +1,12 @@
+[
+  "taskmanager/tasks/tests/integration/test_views.py::test_contact_form_valid_submission",
+  "taskmanager/tasks/tests/test_converters.py::test_to_python",
+  "taskmanager/tasks/tests/test_converters.py::test_to_python_invalid_format",
+  "taskmanager/tasks/tests/test_converters.py::test_to_url",
+  "taskmanager/tasks/tests/test_converters.py::test_to_url_invalid_object",
+  "taskmanager/tasks/tests/test_views.py::test_contact_form_valid_submission",
+  "taskmanager/tasks/tests/unit/test_converters.py::test_to_python",
+  "taskmanager/tasks/tests/unit/test_converters.py::test_to_python_invalid_format",
+  "taskmanager/tasks/tests/unit/test_converters.py::test_to_url",
+  "taskmanager/tasks/tests/unit/test_converters.py::test_to_url_invalid_object"
+]

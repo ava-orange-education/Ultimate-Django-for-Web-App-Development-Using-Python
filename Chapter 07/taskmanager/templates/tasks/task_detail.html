@@ -1,0 +1,37 @@
+{% extends "tasks/base.html" %}
+
+{% block content %}
+<div class="vh-100 d-flex justify-content-center align-items-center">
+    <div class="container text-center">
+        <h1 class="mb-4 ">{{ task.title }}</h1>
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Description</h2>
+                <p class="card-text">{{ task.description }}</p>
+
+                <!-- Emails list -->
+                <h3>Emails</h3>
+                <ul class="list-unstyled">
+                    {% for watcher in task.watchers.all %}
+                    <li>{{ watcher.email }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% if task.file_upload %}
+            <a href="{{ task.file_upload.url }}" download>Download File</a>
+        {% endif %}
+
+        {% if task.image_upload %}
+            <div>
+                <img src="{{ task.image_upload.url }}" alt="Task Image" style="max-width: 300px;">
+            </div>
+        {% endif %}
+        <div class="mt-4 d-inline-block">
+            <a href="{% url 'tasks:task-update' task.id %}" class="btn btn-primary me-2">Edit</a>
+            <a href="{% url 'tasks:task-delete' task.id %}" class="btn btn-danger me-2">Delete</a>
+            <a href="{% url 'tasks:task-list' %}" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

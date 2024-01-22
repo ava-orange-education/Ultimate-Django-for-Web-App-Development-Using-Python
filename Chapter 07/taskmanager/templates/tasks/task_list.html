@@ -1,0 +1,14 @@
+{% extends "tasks/base.html" %}
+
+{% block content %}
+  <h1>Task List</h1>
+  <ul>
+  {% for task in tasks %}
+    <li class="list-unstyled">
+      <a href="{% url 'tasks:task-detail' task.id %}">{{ task.title }}</a>
+    </li>
+  {% empty %}
+    <li>No tasks available.</li>
+  {% endfor %}
+  </ul>
+{% endblock %}

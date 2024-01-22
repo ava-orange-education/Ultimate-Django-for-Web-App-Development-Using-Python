@@ -1,0 +1,46 @@
+{% extends "tasks/base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="w-50">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Create a New Task</h2>
+            </div>
+            <div class="card-body">
+                 <form id="taskForm" method="post" action="{% if task.pk %}{% url 'tasks:task-update' task.pk %}{% else %}{% url 'tasks:task-create' %}{% endif %}">
+
+                    {% csrf_token %}
+                    {% for field in form %}
+                        {% if field.is_hidden %}
+                            {{ field }}
+                        {% else %}
+                        <div class="mb-3">
+                            <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                            {% if field.errors %}
+                            <div class="alert alert-danger mt-2">
+                                {% for error in field.errors %}
+                                <p class="mb-0"><strong>{{ error }}</strong></p>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            {{ field|add_class:"form-control" }}
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                    <button type="submit" class="btn btn-primary w-100">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_javascript %}
+<script>
+    document.getElementById('taskForm').addEventListener('submit', function(){
+        this.querySelector('button[type="submit"]').disabled = true;
+    });
+</script>
+{% endblock %}

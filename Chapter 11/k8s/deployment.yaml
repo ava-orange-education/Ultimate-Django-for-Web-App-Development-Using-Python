@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: taskmanager-deployment
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: taskmanagerapp
+  template:
+    metadata:
+      labels:
+        app: taskmanagerapp
+    spec:
+      containers:
+        - name: taskmanagerapp
+          image: llazzaro/web_applications_django
+          ports:
+            - containerPort: 8000
+          env:
+            - name: JAEGER_AGENT_HOST
+              value: "jaeger-in-memory-collector.taskmanager.svc.cluster.local"
+            - name: JAEGER_AGENT_PORT
+              value: "4317"
+            - name: JAEGER_INSECURE
+              value: "True"
+          envFrom:
+            - configMapRef:
+                name: taskmanager-settings
+            - secretRef:
+                name: taskmanager-secrets
+          readinessProbe:
+            httpGet:
+              path: /health/readiness/
+              port: 8000
+              httpHeaders:
+              - name: Host
+                value: "localhost"
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health/liveness
+              port: 8000
+              httpHeaders:
+              - name: Host
+                value: "localhost"
+            initialDelaySeconds: 15
+            periodSeconds: 10

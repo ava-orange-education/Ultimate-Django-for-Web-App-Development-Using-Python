@@ -1,0 +1,17 @@
+{% extends "tasks/base.html" %}
+
+{% block content %}
+<div class="vh-100 d-flex justify-content-center align-items-center">
+    <div class="text-center w-50">  <!-- Use w-50 for 50% width or adjust as needed -->
+        <h1 class="mb-3">Delete Task</h1>
+        <p class="mb-4">Are you sure you want to delete the task "{{ task.name }}"?</p>
+
+        <form method="post" class="mb-3">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Yes, delete</button>
+        </form>
+
+        <a href="{% url 'tasks:task-detail' task.id %}" class="btn btn-secondary">No, take me back</a>
+    </div>
+</div>
+{% endblock %}

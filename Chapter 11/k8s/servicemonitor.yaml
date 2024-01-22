@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: taskmanager-monitor
+  labels:
+    release: prometheus-operator
+spec:
+  selector:
+    matchLabels:
+      app: taskmanagerapp
+  endpoints:
+  - port: http-metrics
+    interval: 15s
+    path: "/metrics"
